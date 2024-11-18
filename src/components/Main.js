@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import tether from "../tether.png";
+import Airdrop from "./Airdrop";
 
 const Main = ({
   tetherBalance,
   rwdBalance,
   stakingBalance,
   stakeTokens,
-  unstakeTokens
+  unstakeTokens,
+  issueTokens,
+  hasClaimed
 }) => {
   const [inputText, setInputText] = useState("");
   return (
@@ -41,7 +44,7 @@ const Main = ({
               {window.web3.utils.fromWei(stakingBalance, "ether")} USDT
             </td>
             <td style={{ color: "white", background: "transparent" }}>
-              {window.web3.utils.fromWei(rwdBalance, "ether")} RWD
+              {Math.trunc(window.web3.utils.fromWei(rwdBalance, "ether"))} RWD
             </td>
           </tr>
         </tbody>
@@ -69,7 +72,7 @@ const Main = ({
                 <b>Stake Tokens</b>
               </label>
               <span style={{ marginRight: "8px" }}>
-                Balance: {window.web3.utils.fromWei(tetherBalance, "ether")}
+                Balance: {window.web3.utils.fromWei(tetherBalance, "ether")} $
               </span>
             </div>
 
@@ -92,7 +95,7 @@ const Main = ({
               disabled={Number(inputText) <= 0}
               type="submit"
               style={{ width: "100%" }}
-              className="btn btn-primary btn-lg btn-block"
+              className="btn btn-dark btn-lg btn-block"
             >
               DEPOSIT
             </button>
@@ -100,20 +103,22 @@ const Main = ({
         </form>
         <button
           type="submit"
+          disabled={Number(stakingBalance) <= 0}
           onClick={(event) => {
             event.preventDefault();
             unstakeTokens();
           }}
-          className="btn btn-primary btn-lg btn-block"
+          className="btn btn-danger btn-lg btn-block"
         >
           WITHDRAW
         </button>
-        <div className="card-body text-center" style={{ color: "blue" }}>
-          AIRDROP{" "}
-          {/* <Airdrop
-            stakingBalance={this.props.stakingBalance}
-            decentralBankContract={this.props.decentralBankContract}
-          /> */}
+        <div className="card-body text-center" style={{ color: "black" }}>
+          <p style={{ fontWeight: "700", marginBottom: "2px" }}>AIRDROP</p>
+          <Airdrop
+            stakingBalance={stakingBalance}
+            issueTokens={issueTokens}
+            hasClaimed={hasClaimed}
+          />
         </div>
       </div>
     </div>

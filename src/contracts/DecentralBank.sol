@@ -40,7 +40,7 @@ contract DecentralBank {
 
     //issue rewards function
     function issueTokens() public {
-        require(msg.sender == owner, "Only owner can issue tokens");
+        // require(msg.sender == owner, "Only owner can issue tokens");
 
         for (uint i = 0; i < stakers.length; i++) {
             address recipient = stakers[i];

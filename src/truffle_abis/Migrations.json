@@ -1574,12 +1574,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x1bb1528eE2c341271f033876D2F5FfE1201650F0",
-      "transactionHash": "0xf04e66c121bb50694366bd03ce89870a90ea1974ba0f6f0749bd7d3975d0858f"
+      "address": "0x8cC87506920e2d7282737D6F2f711b33a70E0E4C",
+      "transactionHash": "0xe1a540760f3a46fe30325ffb07381f48e5caab911af4345f6c43a09b7c665f68"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-11-17T20:08:59.076Z",
+  "updatedAt": "2024-11-18T22:05:06.666Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

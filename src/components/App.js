@@ -19,6 +19,7 @@ const App = () => {
   const [rwdBalance, setRwdBalance] = useState("0");
   const [stakingBalance, setStakingBalance] = useState("0");
   const [loading, setLoading] = useState(true);
+  const [hasClaimed, setHasClaimed] = useState(false);
 
   const LoadWeb3 = async () => {
     try {
@@ -77,6 +78,9 @@ const App = () => {
       setRwd(rwd);
       let rwdBalance = await rwd.methods.balanceOf(account).call();
       setRwdBalance(rwdBalance.toString());
+      if (Number(rwdBalance.toString()) > 0) {
+        setHasClaimed(true);
+      }
 
       //decentral bank
       const decentralBank = new web3.eth.Contract(
@@ -147,6 +151,23 @@ const App = () => {
     }
   };
 
+  const IssueTokens = async () => {
+    try {
+      setLoading(true);
+      await decentralBank.methods
+        .issueTokens()
+        .send({ from: account, gas: 3000000 });
+
+      let rwdBalance = await rwd.methods.balanceOf(account).call();
+      setRwdBalance(rwdBalance.toString());
+      setHasClaimed(true);
+    } catch (error) {
+      window.alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     LoadWeb3();
     LoadBlockChainData();
@@ -194,6 +215,8 @@ const App = () => {
                   rwdBalance={rwdBalance}
                   stakeTokens={StakeTokens}
                   unstakeTokens={UnstakeTokens}
+                  issueTokens={IssueTokens}
+                  hasClaimed={hasClaimed}
                 />
               </div>
             </main>
