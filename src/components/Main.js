@@ -10,18 +10,39 @@ const Main = ({
 }) => {
   const [inputText, setInputText] = useState("");
   return (
-    <div id="content" className="mt-3">
-      <table className="table text-muted text-center">
+    <div
+      id="content"
+      className="mt-3 "
+      style={{ position: "relative", zIndex: 5 }}
+    >
+      <table
+        className="table text-muted text-center"
+        style={{ background: "transparent" }}
+      >
         <thead>
-          <tr style={{ color: "white" }}>
-            <th scope="col">Staking Balance</th>
-            <th scope="col">Reward Balance</th>
+          <tr style={{ color: "red" }}>
+            <th
+              style={{ color: "white", background: "transparent" }}
+              scope="col"
+            >
+              Staking Balance
+            </th>
+            <th
+              style={{ color: "white", background: "transparent" }}
+              scope="col"
+            >
+              Reward Balance
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr style={{ color: "white" }}>
-            <td>{window.web3.utils.fromWei(stakingBalance, "ether")} USDT</td>
-            <td>{window.web3.utils.fromWei(rwdBalance, "ether")} RWD</td>
+          <tr style={{ color: "white", background: "transparent" }}>
+            <td style={{ color: "white", background: "transparent" }}>
+              {window.web3.utils.fromWei(stakingBalance, "ether")} USDT
+            </td>
+            <td style={{ color: "white", background: "transparent" }}>
+              {window.web3.utils.fromWei(rwdBalance, "ether")} RWD
+            </td>
           </tr>
         </tbody>
       </table>

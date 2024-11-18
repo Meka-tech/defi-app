@@ -7,6 +7,7 @@ import DecentalBank from "../truffle_abis/DecentralBank.json";
 import Main from "./Main";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import ParticleSettings from "./ParticleSettings";
 
 const App = () => {
   //state
@@ -153,11 +154,25 @@ const App = () => {
 
   return (
     <div>
-      <Navbar acoount={account} />
+      <ParticleSettings />
+      <Navbar
+        acoount={account}
+        className="App"
+        style={{ position: "relative" }}
+      />
 
       <div className="container-fluid mt-5">
         {loading ? (
-          <p id="loader" className="text-center" style={{ margin: "30px" }}>
+          <p
+            id="loader"
+            className="text-center"
+            style={{
+              margin: "30px",
+              position: "relative",
+              zIndex: "5",
+              color: "white"
+            }}
+          >
             LOADING PLEASE...
           </p>
         ) : (

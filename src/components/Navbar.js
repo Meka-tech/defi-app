@@ -14,10 +14,9 @@ const Navbar = ({ acoount }) => {
         <img
           src={BankPng}
           alt="Bank"
-          width={"50"}
-          height={"30"}
+          width={"30"}
           className="d-inline-block align-top"
-          style={{ marginRight: "5px" }}
+          style={{ marginRight: "5px", marginLeft: "5px" }}
         />
         DAPP Yield Staking (Decentralized Banking)
       </a>
